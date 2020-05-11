@@ -14,7 +14,8 @@ export class AppComponent {
   }
   async doOCR() {
     console.log("started");
-    const worker = createWorker({logger: m => console.log(m)});
+    const worker = createWorker({logger: m => console.log(m),
+    langPath:"https://tessdata.projectnaptha.com/4.0.0_best"});
   await worker.load();
   await worker.loadLanguage('eng');
   await worker.initialize('eng');

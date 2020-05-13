@@ -14,12 +14,18 @@ export class AppComponent {
   }
   async doOCR() {
     console.log("started");
-    const worker = createWorker({logger: m => console.log(m),
-    langPath:"..",
-  gzip: false});
+    const worker = createWorker({
+  langPath: '..',
+  gzip: false,
+  logger: m => console.log(m)
+});
   await worker.load();
+  console.log("loading");
   await worker.loadLanguage('tes1');
+    console.log("loaded");
   await worker.initialize('tes1');
+    console.log("init");
+
     await worker.setParameters({
     tessedit_char_whitelist: 'RPrp-0123456789',
     tessedit_ocr_engine_mode:OEM.DEFAULT,
